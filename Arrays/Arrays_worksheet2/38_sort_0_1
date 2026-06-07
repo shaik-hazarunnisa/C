@@ -1,0 +1,44 @@
+/******************************************************************************
+    38. Sort array of 0s, 1s and 2s
+    Question description:
+    Write a C program to sort an array consisting of only 0s, 1s, and 2s.
+    Sample data:
+    Input: 0 1 2 0 1 2 1 0
+    Expected output:
+    Sorted array: 0 0 0 1 1 1 2 2
+
+*******************************************************************************/
+#include <stdio.h>
+
+void swap(int*p,int*q) {
+    int temp=*p;
+    *p=*q;
+    *q=temp;
+}
+
+int main() {
+    int arr[] = {0, 1, 2, 0, 1, 2, 1, 0};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    int low =0,i=0,high=n-1;
+
+    while(i<=high) {
+        if(arr[i] == 0) {
+            swap(&arr[low],&arr[i]);
+            low++;
+            i++;
+        }
+        else if(arr[i]==1) {
+           i++;
+        }
+        else { 
+            swap(&arr[i],&arr[high]);
+            high--;
+        }
+    }printf("Sorted array: ");
+    for(i = 0;i<n;i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}

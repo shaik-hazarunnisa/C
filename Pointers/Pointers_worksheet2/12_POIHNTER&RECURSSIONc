@@ -1,0 +1,50 @@
+/******************************************************************************
+12. Pointer and Recursion
+
+Goal:
+
+Use pointers within recursive functions to manipulate data structures 
+or strings.
+
+Activity:
+
+1. Write a recursive function to reverse a string using pointers.
+2. Implement a recursive traversal of a linked list using pointers.
+3. Use recursion to perform operations such as summing elements of an array 
+via pointer traversal.
+*******************************************************************************/
+#include <stdio.h>
+void reverse(char*start,char*end) {
+    if(start>=end)
+        return;
+    char temp=*start;
+    *start=*end;
+    *end=temp;
+    reverse(start+1,end-1);
+}
+struct node {
+    int data;
+    struct node*next;
+};
+void display(struct node *head) {
+    if(head==NULL)
+        return;
+    printf("%d ",head->data);
+    display(head->next);
+}
+int sum(int*arr,int n) {
+    if(n==0)
+        return 0;
+    return*(arr+n-1)+sum(arr,n-1);
+}
+int main() {
+    char str[]="Hello";
+    int len=0;
+    while(str[len]!='\0')len++;
+    reverse(str,str+len-1);
+    printf("Reversed string: %s\n", str);
+    int arr[]={1, 2, 3, 4};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    printf("Sum = %d\n", sum(arr,n));
+    return 0;
+}

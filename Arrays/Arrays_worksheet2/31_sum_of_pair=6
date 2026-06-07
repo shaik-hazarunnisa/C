@@ -1,0 +1,28 @@
+/******************************************************************************
+30. Count pairs with given sum
+    Question description:
+    Write a C program to find number of pairs in the array whose sum is equal to a given value.
+    Sample data:
+    Input array: 1 5 7 -1 5 Sum = 6
+    Expected output:
+    Number of pairs: 3
+
+*******************************************************************************/
+#include <stdio.h>
+
+int main() {
+    int arr[]={1,5,7,-1,5};
+    int n =sizeof(arr)/sizeof(arr[0]);
+    int sum =6,cnt=0;
+
+    for(int i = 0; i < n; i++) {
+        for(int j=i+1;j<n;j++) 
+        {
+            if(arr[i]+arr[j]==sum)
+            {
+                cnt++;
+            }
+        }
+    }
+    printf("Number of pairs:%d\n",cnt);
+}
